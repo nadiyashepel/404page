@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+$animationTime: 2s;
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  $height: 56px;
+  
+  height: $height;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  margin-top: calc(#{$height} * -1);
+  background-color: #f8f9fc;
+  transform: translateY($height);
+  transition: transform $animationTime ease-in-out;
+
+  &__logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 110px;
+  }
+
+  &__right-block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__notification {
+    width: 16px;
+    margin-right: 14px;
+    opacity: .6;
+    cursor: pointer;
+  
+    &:hover {
+      opacity: 1;
+      transition: all $animationTime ease-in-out;
+    }
+  }
+}
+
+.main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  position: relative;
+
+  &__icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f8991c;
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  &:hover .profile__icon {
+    background: #df8004;
+    transition: all $animationTime ease-in-out;
+  }
+
+  &__checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;  
+
+    &:checked + .profile-menu {
+      display: block;
+    }
+  }
+}
+
+.profile-menu {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  display: none;
+  padding: 14px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 27px -9px rgba(175, 175, 175, 0.75);
+
+  &__profile-name {
+    padding: 0 6px 4px;
+    margin-bottom: 4px;
+    border-bottom: 2px solid #888888;
+    font-size: 14px;
+    white-space: nowrap;
+    color: #888888;
+  }
+
+  &__item {
+    display: block;
+    padding: 6px;
+    text-decoration: none;
+    color: #000000;
+
+    &:hover {
+      background-color: #f8f9fc;
+    }
+  }
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+
+  &__icon {
+    width: 24px;
+    margin-left: 8px;
+  }
+}
+
+.app-notifications {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 50%;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 10px;
+  overflow: auto;
+
+  &__item {
+    display: flex;
+    max-width: 230px;
+    align-items: center;
+    padding: 20px 16px;
+    margin: 10px 10px 0;
+    border-radius: 6px;
+    color: white;
+    opacity: .85;
+
+    &--success {
+      background-color: #489e47;
+    }
+
+    &--error {
+      background-color: #c14a43;
+    }
+
+    &--warning {
+      background-color: rgb(233, 162, 31);
+    }
+  }
+
+  &__item-icon {
+    width: 20px;
+    margin-right: 16px;
+  }
+
+  &__item-title {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  &__item-message {
+    margin: 0;
+  }
+}
+
+.element-404 {
+  margin: 20px 15px;
+  text-align: center;
+  font-size: 80px;
+  font-weight: 800;
+
+  & > span {
+    display: inline-block;
+    line-height: 0.7;
+    color: #FFB485;
+
+    &:nth-of-type(1) {
+      perspective: 1000px;
+      perspective-origin: 500% 50%;
+      color: #F0E395;
+
+      &> span {
+        transform-origin: 50% 100% 0px;
+        transform: rotateX(0);
+        animation: easyoutelastic 8s infinite;
+      }
+    }
+
+    & > span:nth-of-type(3) {
+      perspective: none;
+      perspective-origin: 50% 50%;
+      color: #D15C95;
+
+      & > span {
+        transform-origin: 100% 100% 0px;
+        transform: rotate(0deg);
+        animation: rotatedrop 8s infinite;
+      }
+    }
+
+    & > span {
+      display: inline-block;
+    }
+  }
+  
+}
+
+
+@media (min-width: 375px) { 
+  .error-container {
+    font-size: 100px;
+  }
+}
+
+@media (min-width: 650px) { 
+  .error-container {
+    font-size: 180px;
+  }
+}
+
+
+@keyframes easyoutelastic {
+  0% {
+    transform: rotateX(0);
+  }
+  9% {
+    transform: rotateX(210deg);
+  }
+  13% {
+    transform: rotateX(150deg);
+  }
+  16% {
+    transform: rotateX(200deg);
+  }
+  18% {
+    transform: rotateX(170deg);
+  }
+  20% {
+    transform: rotateX(180deg);
+  }
+  60% {
+    transform: rotateX(180deg);
+  }
+  80% {
+    transform: rotateX(0);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+@keyframes rotatedrop {
+  0% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(30deg);
+  }
+  15% {
+    transform: rotate(90deg);
+  }
+  70% {
+    transform: rotate(90deg);
+  }
+  80% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
